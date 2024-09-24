@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/utils/app_styles.dart';
 import 'package:movies_app/layout/home_layout.dart';
+import 'package:movies_app/views/splash/splash_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: MyThemeData.defaultTheme,
-      initialRoute: HomeLayout.routeName,
+      initialRoute: SplashView.routeName,
       routes: {
+        SplashView.routeName: (context) => const SplashView(),
         HomeLayout.routeName: (context) => const HomeLayout(),
       },
     );
