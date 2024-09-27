@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/utils/generated/assets.dart';
-import 'package:movies_app/layout/home_layout.dart';
+import 'package:movies_app/features/layout/presentation/views/home_layout.dart';
+
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});

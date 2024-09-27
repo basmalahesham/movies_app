@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/utils/generated/assets.dart';
-import 'package:movies_app/views/browse/browse_view.dart';
-import 'package:movies_app/views/home/home_view.dart';
-import 'package:movies_app/views/search/search_view.dart';
-import 'package:movies_app/views/watch_list/watch_list_view.dart';
+import 'package:movies_app/features/browse/browse_view.dart';
+import 'package:movies_app/features/home/presentation/views/home_view.dart';
+import 'package:movies_app/features/search/pesentation/views/search_view.dart';
+import 'package:movies_app/features/watch_list/pesentation/views/watch_list_view.dart';
+
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -25,6 +26,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: screens[currentIndex],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(

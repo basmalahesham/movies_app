@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/utils/app_styles.dart';
-import 'package:movies_app/layout/home_layout.dart';
-import 'package:movies_app/views/splash/splash_view.dart';
+import 'package:movies_app/features/layout/presentation/views/home_layout.dart';
+import 'package:movies_app/features/splash/presentation/views/splash_view.dart';
+
 
 void main() {
   runApp(const MyApp());
