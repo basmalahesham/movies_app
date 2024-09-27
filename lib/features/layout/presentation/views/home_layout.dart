@@ -26,7 +26,6 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: screens[currentIndex],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
