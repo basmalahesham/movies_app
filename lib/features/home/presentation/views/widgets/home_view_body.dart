@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/features/home/presentation/views/widgets/custom_carousel_slider.dart';
+import 'package:movies_app/features/home/presentation/views/widgets/new_releases_list_view.dart';
 
 class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
@@ -14,6 +15,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     return const Column(
       children: [
         CustomCarouselSlider(),
+        SizedBox(height: 24,),
+        NewReleasesListView(),
+        SizedBox(height: 30,),
+
       ],
     );
   }
