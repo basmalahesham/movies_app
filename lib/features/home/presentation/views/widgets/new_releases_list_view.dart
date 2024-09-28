@@ -26,6 +26,7 @@ class NewReleasesListView extends StatelessWidget {
           const SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) =>
                   const NewReleaseItem(),
