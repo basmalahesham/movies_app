@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/utils/generated/assets.dart';
+import 'package:movies_app/features/home/presentation/views/movie_details_view.dart';
 
 class CustomCarouselSliderItem extends StatelessWidget {
   const CustomCarouselSliderItem({super.key});
@@ -49,7 +50,9 @@ class CustomCarouselSliderItem extends StatelessWidget {
                   child: Stack(
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, MovieDetailsView.routeName);
+                        },
                         child: Image.asset(
                           Assets.imagesItemImage,
                           fit: BoxFit.cover,
