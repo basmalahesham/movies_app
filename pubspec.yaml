@@ -39,6 +39,7 @@ dependencies:
   url_launcher: ^6.3.0
   dio: ^5.7.0
   carousel_slider: ^5.0.0
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
