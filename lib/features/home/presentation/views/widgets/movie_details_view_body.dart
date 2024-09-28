@@ -128,29 +128,44 @@ class MovieDetailsViewBody extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: Colors.grey),
-                            ),
-                            child: const Padding(
-                              // No attribute in the API refers to movie Type !!!!!!!!!!!!!!!!
-                              // No attribute in the API refers to movie Type !!!!!!!!!!!!!!!!
-                              // No attribute in the API refers to movie Type !!!!!!!!!!!!!!!!
-                              padding: EdgeInsets.all(5.0),
-                              child: Text(
-                                'Action',
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 18),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 5),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: Colors.grey),
+                                ),
+                                child: const Padding(
+                                  // No attribute in the API refers to movie Type !!!!!!!!!!!!!!!!
+                                  // No attribute in the API refers to movie Type !!!!!!!!!!!!!!!!
+                                  // No attribute in the API refers to movie Type !!!!!!!!!!!!!!!!
+                                  padding: EdgeInsets.all(5.0),
+                                  child: Text(
+                                    'Action',
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 18),
+                                  ),
+                                ),
                               ),
-                            ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.share,
+                                  size: 30,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
                           ),
                           const Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
                               'Having spent most of her life exploring the jungle, nothing could prepare Dora for her most dangerous adventure yet — high school. ',
-                              style: TextStyle(color: Colors.white,fontSize: 13),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 13),
                             ),
                           ),
                           const Row(
