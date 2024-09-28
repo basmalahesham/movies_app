@@ -13,25 +13,27 @@ class HomeViewBody extends StatefulWidget {
 class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
-      physics: BouncingScrollPhysics(),
-      slivers: [
-        SliverToBoxAdapter(
-          child: Column(
-            children: [
-              CustomCarouselSlider(),
-              SizedBox(
-                height: 24,
-              ),
-              NewReleasesListView(),
-              SizedBox(
-                height: 30,
-              ),
-              RecomendedListView(),
-            ],
+    return SafeArea(
+      child: const CustomScrollView(
+        physics: BouncingScrollPhysics(),
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                CustomCarouselSlider(),
+                SizedBox(
+                  height: 24,
+                ),
+                NewReleasesListView(),
+                SizedBox(
+                  height: 30,
+                ),
+                RecomendedListView(),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
