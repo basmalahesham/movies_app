@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/utils/generated/assets.dart';
+import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/views/movie_details_view.dart';
 
 class CustomCarouselSliderItem extends StatelessWidget {
-  const CustomCarouselSliderItem({super.key});
-
+  const CustomCarouselSliderItem({super.key, required this.results});
+  final Results results;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -18,8 +18,8 @@ class CustomCarouselSliderItem extends StatelessWidget {
             height: size.height * 0.22,
             child: Stack(
               children: [
-                Image.asset(
-                  Assets.imagesImage,
+                Image.network(
+                  'https://image.tmdb.org/t/p/w500' '${results.backdropPath ?? ''}',
                   fit: BoxFit.cover,
                   width: double.infinity,
                 ),
@@ -28,7 +28,7 @@ class CustomCarouselSliderItem extends StatelessWidget {
                   // left: size.width * 0.40,
                   // top: size.height * 0.09,
                   child: IconButton(
-                    onPressed: (){},
+                    onPressed: () {},
                     icon: const Icon(
                       Icons.play_circle_filled,
                       size: 70,
@@ -51,10 +51,11 @@ class CustomCarouselSliderItem extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, MovieDetailsView.routeName);
+                          Navigator.pushNamed(
+                              context, MovieDetailsView.routeName);
                         },
-                        child: Image.asset(
-                          Assets.imagesItemImage,
+                        child: Image.network(
+                          'https://image.tmdb.org/t/p/w500' '${results.posterPath}',
                           fit: BoxFit.cover,
                           width: 130,
                           height: 200,
@@ -64,32 +65,31 @@ class CustomCarouselSliderItem extends StatelessWidget {
                         onTap: () {},
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(4),
-                          child:
-                          Image.asset('assets/images/ic_bookmark.png'),
+                          child: Image.asset('assets/images/ic_bookmark.png'),
                         ),
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(width: 10),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
-                      'resultResponse!.title',
+                      results.title ?? '',
                       overflow: TextOverflow.visible,
                       maxLines: 2,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
-                      'resultResponse!.releaseDate',
-                      style: TextStyle(
+                      results.releaseDate ?? '',
+                      style: const TextStyle(
                         fontSize: 13,
                         color: Color.fromRGBO(181, 180, 180, 1.0),
                       ),
