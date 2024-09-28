@@ -6,6 +6,8 @@ class BrowseView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const BrowseViewBody();
+    return const SafeArea(
+      child: BrowseViewBody(),
+    );
   }
 }

@@ -6,6 +6,8 @@ class WatchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WatchViewBody();
+    return const SafeArea(
+      child: WatchViewBody(),
+    );
   }
 }

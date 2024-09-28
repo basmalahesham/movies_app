@@ -6,24 +6,22 @@ class BrowseViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        width: double.infinity,
-        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Browse Category',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Browse Category',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
-            CustomBrowseGridView(),
-          ],
-        ),
+          ),
+          CustomBrowseGridView(),
+        ],
       ),
     );
   }

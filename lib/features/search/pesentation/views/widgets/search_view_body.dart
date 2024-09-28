@@ -15,54 +15,52 @@ class _SearchViewBodyState extends State<SearchViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 35, vertical: 12),
-            height: 48,
-            child: TextField(
-              // controller: textController,
-              onChanged: (value) {
-                searchKey = value;
-                setState(() {});
-              },
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-              decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey,
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                filled: true,
-                fillColor: const Color.fromRGBO(81, 79, 79, 1.0),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey,
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                enabled: true,
-                prefixIcon: const Icon(
-                  Icons.search,
-                  color: Colors.white,
-                  size: 24,
-                ),
-                hintText: 'search',
-                hintStyle: const TextStyle(
+    return Column(
+      children: [
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 35, vertical: 12),
+          height: 48,
+          child: TextField(
+            // controller: textController,
+            onChanged: (value) {
+              searchKey = value;
+              setState(() {});
+            },
+            style: const TextStyle(
+              color: Colors.white,
+            ),
+            decoration: InputDecoration(
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
                   color: Colors.grey,
+                  width: 2,
                 ),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              filled: true,
+              fillColor: const Color.fromRGBO(81, 79, 79, 1.0),
+              enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.grey,
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              enabled: true,
+              prefixIcon: const Icon(
+                Icons.search,
+                color: Colors.white,
+                size: 24,
+              ),
+              hintText: 'search',
+              hintStyle: const TextStyle(
+                color: Colors.grey,
               ),
             ),
           ),
-          searchKey.isNotEmpty ? const SearchListView() : const NoMoviesFound(),
-        ],
-      ),
+        ),
+        searchKey.isNotEmpty ? const SearchListView() : const NoMoviesFound(),
+      ],
     );
   }
 }
