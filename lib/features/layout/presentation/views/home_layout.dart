@@ -3,7 +3,7 @@ import 'package:movies_app/core/utils/generated/assets.dart';
 import 'package:movies_app/features/browse/presentation/views/browse_view.dart';
 import 'package:movies_app/features/home/presentation/views/home_view.dart';
 import 'package:movies_app/features/search/pesentation/views/search_view.dart';
-import 'package:movies_app/features/watch_list/pesentation/views/watch_list_view.dart';
+import 'package:movies_app/features/watch_list/pesentation/views/watch_view.dart';
 
 
 class HomeLayout extends StatefulWidget {
@@ -20,7 +20,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     const HomeView(),
     const SearchView(),
     const BrowseView(),
-    const WatchListView(),
+    const WatchView(),
   ];
 
   @override
