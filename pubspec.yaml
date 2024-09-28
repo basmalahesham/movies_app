@@ -41,6 +41,7 @@ dependencies:
   carousel_slider: ^5.0.0
   dartz: ^0.10.1
   get_it: ^8.0.0
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:

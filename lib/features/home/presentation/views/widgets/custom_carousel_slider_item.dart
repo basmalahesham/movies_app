@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/views/movie_details_view.dart';
@@ -18,10 +19,13 @@ class CustomCarouselSliderItem extends StatelessWidget {
             height: size.height * 0.22,
             child: Stack(
               children: [
-                Image.network(
-                  'https://image.tmdb.org/t/p/w500' '${results.backdropPath ?? ''}',
+                CachedNetworkImage(
+                  imageUrl: 'https://image.tmdb.org/t/p/w500' '${results.backdropPath ?? ''}',
                   fit: BoxFit.cover,
                   width: double.infinity,
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  placeholder: (context, url) =>
+                  const Center(child: CircularProgressIndicator()),
                 ),
                 Align(
                   alignment: Alignment.center,
@@ -54,11 +58,14 @@ class CustomCarouselSliderItem extends StatelessWidget {
                           Navigator.pushNamed(
                               context, MovieDetailsView.routeName);
                         },
-                        child: Image.network(
-                          'https://image.tmdb.org/t/p/w500' '${results.posterPath}',
+                        child: CachedNetworkImage(
+                          imageUrl: 'https://image.tmdb.org/t/p/w500' '${results.posterPath}',
                           fit: BoxFit.cover,
                           width: 130,
                           height: 200,
+                          errorWidget: (context, url, error) => const Icon(Icons.error),
+                          placeholder: (context, url) =>
+                          const Center(child: CircularProgressIndicator()),
                         ),
                       ),
                       InkWell(
