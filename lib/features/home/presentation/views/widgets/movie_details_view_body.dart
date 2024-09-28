@@ -25,6 +25,7 @@ class MovieDetailsViewBody extends StatelessWidget {
         ),
       ),
       body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
             child: Column(
