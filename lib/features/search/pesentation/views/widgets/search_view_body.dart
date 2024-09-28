@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/features/search/pesentation/views/widgets/no_movies_found.dart';
+import 'package:movies_app/features/search/pesentation/views/widgets/search_list_view.dart';
 
 class SearchViewBody extends StatefulWidget {
   const SearchViewBody({super.key});
@@ -19,7 +21,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 35, vertical: 12),
             height: 48,
-            child: TextFormField(
+            child: TextField(
               // controller: textController,
               onChanged: (value) {
                 searchKey = value;
@@ -58,27 +60,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
               ),
             ),
           ),
-          searchKey.isNotEmpty
-              ? const SizedBox()
-              : const Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.local_movies,
-                        color: Color.fromRGBO(181, 180, 180, 1.0),
-                        size: 150,
-                      ),
-                      Text(
-                        'No movies found',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color.fromRGBO(181, 180, 180, 1.0),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+          searchKey.isNotEmpty ? const SearchListView() : const NoMoviesFound(),
         ],
       ),
     );
