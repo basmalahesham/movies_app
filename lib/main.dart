@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/utils/app_styles.dart';
+import 'package:movies_app/core/utils/service_locator.dart';
 import 'package:movies_app/features/browse/presentation/views/browse_list_view.dart';
 import 'package:movies_app/features/home/presentation/views/movie_details_view.dart';
 import 'package:movies_app/features/layout/presentation/views/home_layout.dart';
@@ -7,6 +8,7 @@ import 'package:movies_app/features/splash/presentation/views/splash_view.dart';
 
 
 void main() {
+  setUpServiceLocator();
   runApp(const MyApp());
 }
 
