@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/views/widgets/custom_movie_image.dart';
 
 class RecomendedItem extends StatelessWidget {
-  const RecomendedItem({super.key});
-
+  const RecomendedItem({super.key, required this.topMovies, required this.index});
+  final MovieModel topMovies;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,48 +21,48 @@ class RecomendedItem extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const Stack(
+           Stack(
             children: [
-              CustomMovieImage(),
+              CustomMovieImage(movies: topMovies, index: index,),
             ],
           ),
           Container(
             margin: const EdgeInsets.all(6),
-            child: const Column(
+            child:  Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.grade,
                       size: 18,
                       color: Color.fromRGBO(255, 187, 59, 1.0),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Text(
-                      '7.7',
-                      style: TextStyle(
+                      '${topMovies.results!.elementAt(index).voteAverage}',
+                      style: const TextStyle(
                         fontSize: 12,
                         color: Colors.white,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 3),
+                const SizedBox(height: 3),
                 Text(
-                  'Deadpool 2',
+                  topMovies.results!.elementAt(index).title ?? '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 12,
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 3),
+                const SizedBox(height: 3),
                 Text(
-                  '2018  R  1h 59m',
+                  topMovies.results!.elementAt(index).releaseDate ?? '',
                   textAlign: TextAlign.start,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 10,
                     color: Color.fromRGBO(181, 180, 180, 1.0),
                   ),
