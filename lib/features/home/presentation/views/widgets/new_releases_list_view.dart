@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/core/utils/widgets/custom_error_widget.dart';
+import 'package:movies_app/core/utils/widgets/custom_loading_indicator.dart';
+import 'package:movies_app/features/home/presentation/manager/latest_movies_cubit/latest_movies_cubit.dart';
 import 'package:movies_app/features/home/presentation/views/widgets/new_release_item.dart';
 
 class NewReleasesListView extends StatelessWidget {
-  const NewReleasesListView({super.key});
+  const NewReleasesListView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +30,26 @@ class NewReleasesListView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          Expanded(
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) =>
-                  const NewReleaseItem(),
-              itemCount: 10,
-            ),
+          BlocBuilder<LatestMoviesCubit, LatestMoviesState>(
+            builder: (context, state) {
+              if (state is LatestMoviesSuccess) {
+                return Expanded(
+                  child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => NewReleaseItem(
+                      topMovies: state.movieModel,
+                      index: index,
+                    ),
+                    itemCount: state.movieModel.results!.length,
+                  ),
+                );
+              } else if (state is LatestMoviesFailure) {
+                return CustomErrorWidget(errMessage: state.errMessage);
+              } else {
+                return const CustomLoadingIndicator();
+              }
+            },
           ),
         ],
       ),
