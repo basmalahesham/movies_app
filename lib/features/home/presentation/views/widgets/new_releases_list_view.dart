@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/utils/widgets/custom_error_widget.dart';
 import 'package:movies_app/core/utils/widgets/custom_loading_indicator.dart';
-import 'package:movies_app/features/home/presentation/manager/latest_movies_cubit/latest_movies_cubit.dart';
+import 'package:movies_app/features/home/presentation/manager/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:movies_app/features/home/presentation/views/widgets/new_release_item.dart';
 
 class NewReleasesListView extends StatelessWidget {
@@ -30,9 +30,9 @@ class NewReleasesListView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          BlocBuilder<LatestMoviesCubit, LatestMoviesState>(
+          BlocBuilder<PopularMoviesCubit, PopularMoviesState>(
             builder: (context, state) {
-              if (state is LatestMoviesSuccess) {
+              if (state is PopularMoviesSuccess) {
                 return Expanded(
                   child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
@@ -44,7 +44,7 @@ class NewReleasesListView extends StatelessWidget {
                     itemCount: state.movieModel.results!.length,
                   ),
                 );
-              } else if (state is LatestMoviesFailure) {
+              } else if (state is PopularMoviesFailure) {
                 return CustomErrorWidget(errMessage: state.errMessage);
               } else {
                 return const CustomLoadingIndicator();
