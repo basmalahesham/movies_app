@@ -110,19 +110,16 @@ class MovieDetailsViewBody extends StatelessWidget {
                         height: 300,
                         child: Stack(
                           children: [
-                            InkWell(
-                              onTap: () {},
-                              child: CachedNetworkImage(
-                                imageUrl: 'https://image.tmdb.org/t/p/w500'
-                                    '${args.posterPath}',
-                                fit: BoxFit.cover,
-                                width: 130,
-                                height: 200,
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
-                                placeholder: (context, url) => const Center(
-                                  child: CircularProgressIndicator(),
-                                ),
+                            CachedNetworkImage(
+                              imageUrl: 'https://image.tmdb.org/t/p/w500'
+                                  '${args.posterPath}',
+                              fit: BoxFit.cover,
+                              width: 130,
+                              height: 200,
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                              placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator(),
                               ),
                             ),
                             InkWell(
