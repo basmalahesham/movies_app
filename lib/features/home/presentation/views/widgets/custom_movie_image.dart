@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/features/home/data/models/movie_model.dart';
+import 'package:movies_app/features/home/presentation/views/movie_details_view.dart';
 
 class CustomMovieImage extends StatelessWidget {
   const CustomMovieImage({
@@ -15,7 +16,13 @@ class CustomMovieImage extends StatelessWidget {
     return Stack(
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+              MovieDetailsView.routeName,
+              arguments: movies.results!.elementAt(index),
+            );
+          },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(6),
             child: CachedNetworkImage(

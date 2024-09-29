@@ -20,12 +20,13 @@ class CustomCarouselSliderItem extends StatelessWidget {
             child: Stack(
               children: [
                 CachedNetworkImage(
-                  imageUrl: 'https://image.tmdb.org/t/p/w500' '${results.backdropPath ?? ''}',
+                  imageUrl: 'https://image.tmdb.org/t/p/w500'
+                      '${results.backdropPath ?? ''}',
                   fit: BoxFit.cover,
                   width: double.infinity,
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                   placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator()),
+                      const Center(child: CircularProgressIndicator()),
                 ),
                 Align(
                   alignment: Alignment.center,
@@ -56,16 +57,21 @@ class CustomCarouselSliderItem extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           Navigator.pushNamed(
-                              context, MovieDetailsView.routeName);
+                            context,
+                            MovieDetailsView.routeName,
+                            arguments: results,
+                          );
                         },
                         child: CachedNetworkImage(
-                          imageUrl: 'https://image.tmdb.org/t/p/w500' '${results.posterPath}',
+                          imageUrl: 'https://image.tmdb.org/t/p/w500'
+                              '${results.posterPath}',
                           fit: BoxFit.cover,
                           width: 130,
                           height: 200,
-                          errorWidget: (context, url, error) => const Icon(Icons.error),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
                           placeholder: (context, url) =>
-                          const Center(child: CircularProgressIndicator()),
+                              const Center(child: CircularProgressIndicator()),
                         ),
                       ),
                       InkWell(

@@ -1,5 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/utils/generated/assets.dart';
+import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/views/widgets/more_movies_list_view.dart';
 
 class MovieDetailsViewBody extends StatelessWidget {
@@ -7,17 +8,18 @@ class MovieDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var args = ModalRoute.of(context)!.settings.arguments as Results;
     Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
         backgroundColor: const Color(0xFF1D1E1D),
-        title: const Text(
-          'Dora and the lost city of gold',
-          style: TextStyle(
+        centerTitle: true,
+        title: Text(
+          args.title ?? '',
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
             color: Colors.white,
@@ -37,10 +39,16 @@ class MovieDetailsViewBody extends StatelessWidget {
                       height: size.height * 0.22,
                       child: Stack(
                         children: [
-                          Image.asset(
-                            Assets.imagesImage,
+                          CachedNetworkImage(
+                            imageUrl: 'https://image.tmdb.org/t/p/w500'
+                                '${args.backdropPath ?? ''}',
                             fit: BoxFit.cover,
                             width: double.infinity,
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                            placeholder: (context, url) => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
                           ),
                           Align(
                             alignment: Alignment.center,
@@ -58,26 +66,26 @@ class MovieDetailsViewBody extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Row(
+                Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 10, top: 10),
+                      padding: const EdgeInsets.only(left: 10, top: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Dora and the lost city of gold',
+                            args.title ?? '',
                             overflow: TextOverflow.visible,
                             maxLines: 2,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16,
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Text(
-                            '2019  PG-13  2h 7m',
-                            style: TextStyle(
+                            args.releaseDate ?? '',
+                            style: const TextStyle(
                               fontSize: 13,
                               color: Color.fromRGBO(181, 180, 180, 1.0),
                             ),
@@ -104,11 +112,17 @@ class MovieDetailsViewBody extends StatelessWidget {
                           children: [
                             InkWell(
                               onTap: () {},
-                              child: Image.asset(
-                                Assets.imagesItemImage,
+                              child: CachedNetworkImage(
+                                imageUrl: 'https://image.tmdb.org/t/p/w500'
+                                    '${args.posterPath}',
                                 fit: BoxFit.cover,
                                 width: 130,
                                 height: 200,
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                                placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
                               ),
                             ),
                             InkWell(
@@ -139,9 +153,6 @@ class MovieDetailsViewBody extends StatelessWidget {
                                   border: Border.all(color: Colors.grey),
                                 ),
                                 child: const Padding(
-                                  // No attribute in the API refers to movie Type !!!!!!!!!!!!!!!!
-                                  // No attribute in the API refers to movie Type !!!!!!!!!!!!!!!!
-                                  // No attribute in the API refers to movie Type !!!!!!!!!!!!!!!!
                                   padding: EdgeInsets.all(5.0),
                                   child: Text(
                                     'Action',
@@ -160,27 +171,27 @@ class MovieDetailsViewBody extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Having spent most of her life exploring the jungle, nothing could prepare Dora for her most dangerous adventure yet — high school. ',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 13),
+                              args.overview ?? '',
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 13),
                             ),
                           ),
-                          const Row(
+                          Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.star,
                                 color: Colors.yellow,
                                 size: 20,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 5,
                               ),
                               Text(
-                                '7.7',
-                                style: TextStyle(
+                                '${args.voteAverage}',
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
                                 ),
