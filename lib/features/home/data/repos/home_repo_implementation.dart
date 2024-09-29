@@ -69,4 +69,24 @@ class HomeRepoImplementation implements HomeRepo {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, MovieModel>> fetchSimilarMovie({required int movieId}) async{
+    try {
+      var data = await apiService.get(endpoint: '$movieId/top_rated');
+      var result = MovieModel.fromJson(data);
+      return right(result);
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioException(e),
+        );
+      }
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
+    }
+  }
 }
