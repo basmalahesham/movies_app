@@ -11,7 +11,7 @@ class LatestMoviesCubit extends Cubit<LatestMoviesState> {
 
   Future<void> fetchLatestMovie() async {
     emit(LatestMoviesLoading());
-    var result = await homeRepo.fetchPopularMovie();
+    var result = await homeRepo.fetchLatestMovie();
     result.fold(
           (failure) => emit(
         LatestMoviesFailure(failure.errMessage),
