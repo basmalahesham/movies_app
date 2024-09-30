@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/features/home/data/models/movie_model.dart';
+import 'package:movies_app/features/home/presentation/manager/similar_movies/similar_movies_cubit.dart';
 import 'package:movies_app/features/home/presentation/views/widgets/more_movies_list_view.dart';
 
 class MovieDetailsViewBody extends StatelessWidget {
@@ -10,6 +12,9 @@ class MovieDetailsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)!.settings.arguments as Results;
     Size size = MediaQuery.of(context).size;
+    // Trigger the cubit function to fetch similar movies
+    BlocProvider.of<SimilarMoviesCubit>(context)
+        .fetchSimilarMovie(movieId: args.id ?? 0);
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(
