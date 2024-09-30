@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/features/browse/data/models/genre_model.dart';
 import 'package:movies_app/features/browse/presentation/views/browse_list_view.dart';
 
 class CustomBrowseGridViewItem extends StatelessWidget {
-  const CustomBrowseGridViewItem({super.key});
-
+  const CustomBrowseGridViewItem({super.key, required this.genreModel});
+  final Genres genreModel;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, BrowseListView.routeName);
+        Navigator.pushNamed(
+          context,
+          BrowseListView.routeName,
+          arguments: genreModel,
+        );
       },
       child: SizedBox(
         width: 160.0,
@@ -17,16 +22,16 @@ class CustomBrowseGridViewItem extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: const DecorationImage(
-              image: AssetImage('assets/images/image_cat.png'),
+              image: AssetImage('assets/images/proxy-image.jpg'),
             ),
           ),
-          child: const Center(
+          child: Center(
             child: Text(
-              'Action',
+              genreModel.name ?? '',
               style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
           ),
