@@ -6,12 +6,12 @@ import 'package:movies_app/features/browse/data/models/genre_model.dart';
 import 'package:movies_app/features/browse/data/repos/browse_repo.dart';
 import 'package:movies_app/features/home/data/models/movie_model.dart';
 
-class BrowseRepoImplementation implements BrowseRepo{
+class BrowseRepoImplementation implements BrowseRepo {
   final ApiService apiService;
 
   BrowseRepoImplementation(this.apiService);
   @override
-  Future<Either<Failure, GenreModel>> fetchGenre() async{
+  Future<Either<Failure, GenreModel>> fetchGenre() async {
     try {
       var data = await apiService.get(endpoint: 'genre/movie/list');
       var result = GenreModel.fromJson(data);
@@ -28,11 +28,10 @@ class BrowseRepoImplementation implements BrowseRepo{
         ),
       );
     }
-
   }
 
   @override
-  Future<Either<Failure, MovieModel>> fetchMoviesList() async{
+  Future<Either<Failure, MovieModel>> fetchMoviesList() async {
     try {
       var data = await apiService.get(endpoint: 'discover/movie');
       var result = MovieModel.fromJson(data);
@@ -50,5 +49,4 @@ class BrowseRepoImplementation implements BrowseRepo{
       );
     }
   }
-
 }
