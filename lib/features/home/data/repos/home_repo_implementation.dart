@@ -73,7 +73,7 @@ class HomeRepoImplementation implements HomeRepo {
   @override
   Future<Either<Failure, MovieModel>> fetchSimilarMovie({required int movieId}) async{
     try {
-      var data = await apiService.get(endpoint: '$movieId/top_rated');
+      var data = await apiService.get(endpoint: '$movieId/similar');
       var result = MovieModel.fromJson(data);
       return right(result);
     } catch (e) {
