@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class ApiService{
-  final _baseUrl = 'https://api.themoviedb.org/3/movie/';
+  final _baseUrl = 'https://api.themoviedb.org/3/';
   final _apiKey = '5eaf06d00921bf74711bebae7460e509';
   final Dio _dio;
   ApiService(this._dio);
