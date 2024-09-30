@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/features/home/data/models/movie_model.dart';
+import 'package:movies_app/features/search/pesentation/manager/search_cubit/search_cubit.dart';
 import 'package:movies_app/features/search/pesentation/views/widgets/no_movies_found.dart';
 import 'package:movies_app/features/search/pesentation/views/widgets/search_list_view.dart';
 
@@ -12,7 +15,7 @@ class SearchViewBody extends StatefulWidget {
 class _SearchViewBodyState extends State<SearchViewBody> {
   TextEditingController textController = TextEditingController();
   String searchKey = '';
-
+  List<Results> result = [];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,8 +26,14 @@ class _SearchViewBodyState extends State<SearchViewBody> {
           child: TextField(
             // controller: textController,
             onChanged: (value) {
-              searchKey = value;
-              setState(() {});
+              setState(() {
+                searchKey = value;
+                if (searchKey.isNotEmpty) {
+                  // Trigger the search when the user types
+                  BlocProvider.of<SearchCubit>(context)
+                      .fetchSearch(query: searchKey);
+                }
+              });
             },
             style: const TextStyle(
               color: Colors.white,
