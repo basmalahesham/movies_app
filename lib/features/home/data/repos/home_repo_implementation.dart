@@ -13,7 +13,7 @@ class HomeRepoImplementation implements HomeRepo {
   @override
   Future<Either<Failure, MovieModel>> fetchLatestMovie() async{
     try {
-      var data = await apiService.get(endpoint: 'movie/latest?');
+      var data = await apiService.get(endpoint: 'movie/latest');
       var result = MovieModel.fromJson(data);
       return right(result);
     } catch (e) {
@@ -33,7 +33,7 @@ class HomeRepoImplementation implements HomeRepo {
   @override
   Future<Either<Failure, MovieModel>> fetchPopularMovie() async {
     try {
-      var data = await apiService.get(endpoint: 'movie/popular?');
+      var data = await apiService.get(endpoint: 'movie/popular');
       var result = MovieModel.fromJson(data);
       return right(result);
     } catch (e) {
@@ -53,7 +53,7 @@ class HomeRepoImplementation implements HomeRepo {
   @override
   Future<Either<Failure, MovieModel>> fetchTopRatedMovie() async{
     try {
-      var data = await apiService.get(endpoint: 'movie/top_rated?');
+      var data = await apiService.get(endpoint: 'movie/top_rated');
       var result = MovieModel.fromJson(data);
       return right(result);
     } catch (e) {
@@ -73,7 +73,7 @@ class HomeRepoImplementation implements HomeRepo {
   @override
   Future<Either<Failure, MovieModel>> fetchSimilarMovie({required int movieId}) async{
     try {
-      var data = await apiService.get(endpoint: 'movie/$movieId/similar?');
+      var data = await apiService.get(endpoint: 'movie/$movieId/similar');
       var result = MovieModel.fromJson(data);
       return right(result);
     } catch (e) {
