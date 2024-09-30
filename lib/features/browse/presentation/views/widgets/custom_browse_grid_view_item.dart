@@ -28,7 +28,7 @@ class CustomBrowseGridViewItem extends StatelessWidget {
           child: Center(
             child: Text(
               genreModel.name ?? '',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
