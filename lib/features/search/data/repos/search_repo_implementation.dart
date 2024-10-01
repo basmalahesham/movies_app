@@ -14,7 +14,11 @@ class SearchRepoImplementation implements SearchRepo {
   Future<Either<Failure, MovieModel>> fetchSearch(
       {required String query}) async {
     try {
-      var data = await apiService.get(endpoint: 'search/movie', query: query);
+      var data = await apiService.get(
+        endpoint: 'search/movie',
+        query: query,
+        queryName: 'query',
+      );
       var result = MovieModel.fromJson(data);
       return right(result);
     } catch (e) {
