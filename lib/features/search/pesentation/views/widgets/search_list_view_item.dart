@@ -1,10 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/views/movie_details_view.dart';
 
 class SearchListViewItem extends StatelessWidget {
-  const SearchListViewItem(
-      {super.key, required this.movieResponse,});
+  const SearchListViewItem({
+    super.key,
+    required this.movieResponse,
+  });
   final Results movieResponse;
 
   @override
@@ -27,12 +30,17 @@ class SearchListViewItem extends StatelessWidget {
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(6),
-                    child: Image.network(
-                      'https://image.tmdb.org/t/p/w500'
+                    child: CachedNetworkImage(
+                      imageUrl: 'https://image.tmdb.org/t/p/w500'
                           '${movieResponse.posterPath}',
                       fit: BoxFit.cover,
                       width: 150,
                       height: 100,
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                      placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
                     ),
                   ),
                 ),
