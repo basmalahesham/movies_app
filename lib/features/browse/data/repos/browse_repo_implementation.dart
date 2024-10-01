@@ -31,9 +31,14 @@ class BrowseRepoImplementation implements BrowseRepo {
   }
 
   @override
-  Future<Either<Failure, MovieModel>> fetchMoviesList() async {
+  Future<Either<Failure, MovieModel>> fetchMoviesList(
+      {required String categoryName}) async {
     try {
-      var data = await apiService.get(endpoint: 'discover/movie');
+      var data = await apiService.get(
+        endpoint: 'discover/movie',
+        query: categoryName,
+        queryName: 'certification',
+      );
       var result = MovieModel.fromJson(data);
       return right(result);
     } catch (e) {

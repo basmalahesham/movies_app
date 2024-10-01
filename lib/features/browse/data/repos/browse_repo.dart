@@ -5,5 +5,5 @@ import 'package:movies_app/features/home/data/models/movie_model.dart';
 
 abstract class BrowseRepo {
   Future<Either<Failure, GenreModel>> fetchGenre();
-  Future<Either<Failure, MovieModel>> fetchMoviesList();
+  Future<Either<Failure, MovieModel>> fetchMoviesList({required String categoryName});
 }
