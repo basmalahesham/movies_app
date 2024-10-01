@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/utils/generated/assets.dart';
+import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/views/movie_details_view.dart';
 
 class BrowseListViewItem extends StatelessWidget {
   const BrowseListViewItem({
     super.key,
+    required this.movieModel,
   });
-
+  final Results movieModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,12 +21,16 @@ class BrowseListViewItem extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.pushNamed(
-                      context, MovieDetailsView.routeName);
+                    context,
+                    MovieDetailsView.routeName,
+                    arguments: movieModel,
+                  );
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(6),
-                  child: Image.asset(
-                    Assets.imagesItemImage,
+                  child: Image.network(
+                    'https://image.tmdb.org/t/p/w500'
+                    '${movieModel.posterPath}',
                     fit: BoxFit.cover,
                     width: 150,
                     height: 100,
@@ -36,43 +41,42 @@ class BrowseListViewItem extends StatelessWidget {
                 onTap: () {},
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(4),
-                  child: Image.asset(
-                      'assets/images/ic_bookmark.png'),
+                  child: Image.asset('assets/images/ic_bookmark.png'),
                 ),
               ),
             ],
           ),
           const SizedBox(width: 10),
-          const Expanded(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'movieResult!.title',
+                  movieModel.title ?? '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 15,
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(
-                  'movieResult!.releaseDate',
+                  movieModel.releaseDate ?? '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 13,
                     color: Color.fromRGBO(181, 180, 180, 1.0),
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(
-                  'movieResult!.overview',
+                  movieModel.overview ?? '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 13,
                     color: Color.fromRGBO(181, 180, 180, 1.0),
                   ),
