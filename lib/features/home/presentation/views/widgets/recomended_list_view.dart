@@ -36,8 +36,7 @@ class RecomendedListView extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) =>
                         RecomendedItem(
-                      topMovies: state.movieModel,
-                      index: index,
+                      movie: state.movieModel.results![index],
                     ),
                     itemCount: state.movieModel.results!.length,
                   ),

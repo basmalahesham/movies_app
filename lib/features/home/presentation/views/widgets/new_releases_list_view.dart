@@ -38,8 +38,7 @@ class NewReleasesListView extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => NewReleaseItem(
-                      topMovies: state.movieModel,
-                      index: index,
+                      movie: state.movieModel.results![index],
                     ),
                     itemCount: state.movieModel.results!.length,
                   ),

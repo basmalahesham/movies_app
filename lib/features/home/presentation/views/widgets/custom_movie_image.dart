@@ -10,10 +10,8 @@ class CustomMovieImage extends StatelessWidget {
   const CustomMovieImage({
     super.key,
     required this.movies,
-    required this.index,
   });
-  final MovieModel movies;
-  final int index;
+  final Results movies;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -23,14 +21,14 @@ class CustomMovieImage extends StatelessWidget {
             Navigator.pushNamed(
               context,
               MovieDetailsView.routeName,
-              arguments: movies.results!.elementAt(index),
+              arguments: movies,
             );
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(6),
             child: CachedNetworkImage(
               imageUrl: 'https://image.tmdb.org/t/p/w500'
-                  '${movies.results!.elementAt(index).posterPath}',
+                  '${movies.posterPath}',
               fit: BoxFit.cover,
               width: 110,
               height: 130,
@@ -46,13 +44,13 @@ class CustomMovieImage extends StatelessWidget {
             return InkWell(
               onTap: () {
                 BlocProvider.of<WatchListCubit>(context)
-                    .selectMovie(movies.results!.elementAt(index));
+                    .selectMovie(movies);
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(4),
                 child: BlocProvider.of<WatchListCubit>(context).state
                         .idList
-                        .contains(movies.results!.elementAt(index).id)
+                        .contains(movies.id)
                     ? Image.asset(Assets.imagesIcCheck)
                     : Image.asset(Assets.imagesIcBookmark),
               ),

@@ -36,8 +36,7 @@ class MoreMoviesListView extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) =>
                         MoreMoviesItem(
-                      topMovies: state.movieModel,
-                      index: index,
+                      movie: state.movieModel.results![index],
                     ),
                     itemCount: state.movieModel.results!
                         .length, // Use actual length of movies

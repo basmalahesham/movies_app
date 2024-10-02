@@ -3,9 +3,8 @@ import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/views/widgets/custom_movie_image.dart';
 
 class NewReleaseItem extends StatelessWidget {
-  const NewReleaseItem({super.key, required this.topMovies, required this.index});
-  final MovieModel topMovies;
-  final int index;
+  const NewReleaseItem({super.key, required this.movie});
+  final Results movie;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,7 +14,7 @@ class NewReleaseItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
       ),
-      child: CustomMovieImage(index: index,movies: topMovies,),
+      child: CustomMovieImage(movies: movie,),
     );
   }
 }

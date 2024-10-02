@@ -3,9 +3,8 @@ import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/views/widgets/custom_movie_image.dart';
 
 class RecomendedItem extends StatelessWidget {
-  const RecomendedItem({super.key, required this.topMovies, required this.index});
-  final MovieModel topMovies;
-  final int index;
+  const RecomendedItem({super.key, required this.movie});
+  final Results movie;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,7 +22,7 @@ class RecomendedItem extends StatelessWidget {
         children: [
            Stack(
             children: [
-              CustomMovieImage(movies: topMovies, index: index,),
+              CustomMovieImage(movies: movie),
             ],
           ),
           Container(
@@ -40,7 +39,7 @@ class RecomendedItem extends StatelessWidget {
                     ),
                     const SizedBox(width: 5),
                     Text(
-                      '${topMovies.results!.elementAt(index).voteAverage}',
+                      '${movie.voteAverage}',
                       style: const TextStyle(
                         fontSize: 12,
                         color: Colors.white,
@@ -50,7 +49,7 @@ class RecomendedItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  topMovies.results!.elementAt(index).title ?? '',
+                  movie.title ?? '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
@@ -60,7 +59,7 @@ class RecomendedItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  topMovies.results!.elementAt(index).releaseDate ?? '',
+                  movie.releaseDate ?? '',
                   textAlign: TextAlign.start,
                   style: const TextStyle(
                     fontSize: 10,
