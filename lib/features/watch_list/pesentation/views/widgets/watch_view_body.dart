@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/features/watch_list/pesentation/manager/watch_list_cubit/watch_list_cubit.dart';
-import 'package:movies_app/features/watch_list/pesentation/views/widgets/no_movies_select.dart';
 import 'package:movies_app/features/watch_list/pesentation/views/widgets/watch_list_view.dart';
 
 class WatchViewBody extends StatelessWidget {
@@ -26,9 +23,7 @@ class WatchViewBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          context.read<WatchListCubit>().state.idList.isNotEmpty
-              ? const WatchListView()
-              : const NoMoviesSelect(),
+          const WatchListView()
         ],
       ),
     );
