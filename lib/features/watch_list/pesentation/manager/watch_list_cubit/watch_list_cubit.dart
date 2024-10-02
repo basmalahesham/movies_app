@@ -5,22 +5,22 @@ import 'package:movies_app/features/home/data/models/movie_model.dart';
 part 'watch_list_state.dart';
 
 class WatchListCubit extends Cubit<WatchListState> {
-  WatchListCubit() : super(WatchListInitial());
-  List<Results> watchList = [];
-  List<int> idList = [];
+  WatchListCubit() : super(const WatchListInitial(watchList: [], idList: []));
 
   void selectMovie(Results resultsMovie) {
-    //final currentIdList = List<int>.from(idList);
-    //final currentWatchList = List<Results>.from(watchList);
+    final currentIdList = List<int>.from(state.idList);
+    final currentWatchList = List<Results>.from(state.watchList);
 
-    if (!idList.contains(resultsMovie.id)) {
-      watchList.add(resultsMovie);
-      idList.add(resultsMovie.id!);
-      emit(WatchListChanged());
+    if (!currentIdList.contains(resultsMovie.id)) {
+      currentWatchList.add(resultsMovie);
+      currentIdList.add(resultsMovie.id!);
+      emit(
+          WatchListChanged(watchList: currentWatchList, idList: currentIdList));
     } else {
-      idList.remove(resultsMovie.id);
-      watchList.removeWhere((element) => element.id == resultsMovie.id);
-      emit(WatchListChanged());
+      currentIdList.remove(resultsMovie.id);
+      currentWatchList.removeWhere((element) => element.id == resultsMovie.id);
+      emit(
+          WatchListChanged(watchList: currentWatchList, idList: currentIdList));
     }
   }
 }

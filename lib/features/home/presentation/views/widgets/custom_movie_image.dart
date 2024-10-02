@@ -50,7 +50,7 @@ class CustomMovieImage extends StatelessWidget {
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(4),
-                child: BlocProvider.of<WatchListCubit>(context)
+                child: BlocProvider.of<WatchListCubit>(context).state
                         .idList
                         .contains(movies.results!.elementAt(index).id)
                     ? Image.asset(Assets.imagesIcCheck)

@@ -23,10 +23,10 @@ class WatchListView extends StatelessWidget {
               height: 1,
               color: Colors.grey,
             ),
-            itemCount: context.read<WatchListCubit>().watchList.length,
+            itemCount: state.watchList.length,
             itemBuilder: (buildContext, index) {
               return WatchListViewItem(
-                movieResult: context.read<WatchListCubit>().watchList[index],
+                movieResult: state.watchList[index],
               );
             },
           );

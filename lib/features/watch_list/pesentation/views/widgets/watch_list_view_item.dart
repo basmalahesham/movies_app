@@ -53,7 +53,7 @@ class WatchListViewItem extends StatelessWidget {
                     },
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(4),
-                      child: BlocProvider.of<WatchListCubit>(context)
+                      child: state
                           .idList
                           .contains(movieResult.id)
                           ? Image.asset(Assets.imagesIcCheck)

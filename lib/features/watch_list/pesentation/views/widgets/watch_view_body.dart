@@ -26,7 +26,7 @@ class WatchViewBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          context.read<WatchListCubit>().idList.isNotEmpty
+          context.read<WatchListCubit>().state.idList.isNotEmpty
               ? const WatchListView()
               : const NoMoviesSelect(),
         ],
