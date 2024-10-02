@@ -26,6 +26,7 @@ class SearchListViewItem extends StatelessWidget {
                     Navigator.pushNamed(
                       context,
                       MovieDetailsView.routeName,
+                      arguments: movieResponse,
                     );
                   },
                   child: ClipRRect(
