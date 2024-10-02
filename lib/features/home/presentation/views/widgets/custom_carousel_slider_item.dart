@@ -1,11 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/core/utils/generated/assets.dart';
 import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/views/movie_details_view.dart';
+import 'package:movies_app/features/watch_list/pesentation/manager/watch_list_cubit/watch_list_cubit.dart';
 
 class CustomCarouselSliderItem extends StatelessWidget {
-  const CustomCarouselSliderItem({super.key, required this.results});
-  final Results results;
+  const CustomCarouselSliderItem({super.key, required this.movies});
+  final Results movies;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -21,7 +24,7 @@ class CustomCarouselSliderItem extends StatelessWidget {
               children: [
                 CachedNetworkImage(
                   imageUrl: 'https://image.tmdb.org/t/p/w500'
-                      '${results.backdropPath ?? ''}',
+                      '${movies.backdropPath ?? ''}',
                   fit: BoxFit.cover,
                   width: double.infinity,
                   errorWidget: (context, url, error) => const Icon(Icons.error),
@@ -59,12 +62,12 @@ class CustomCarouselSliderItem extends StatelessWidget {
                           Navigator.pushNamed(
                             context,
                             MovieDetailsView.routeName,
-                            arguments: results,
+                            arguments: movies,
                           );
                         },
                         child: CachedNetworkImage(
                           imageUrl: 'https://image.tmdb.org/t/p/w500'
-                              '${results.posterPath}',
+                              '${movies.posterPath}',
                           fit: BoxFit.cover,
                           width: 130,
                           height: 200,
@@ -74,12 +77,23 @@ class CustomCarouselSliderItem extends StatelessWidget {
                               const Center(child: CircularProgressIndicator()),
                         ),
                       ),
-                      InkWell(
-                        onTap: () {},
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
-                          child: Image.asset('assets/images/ic_bookmark.png'),
-                        ),
+                      BlocBuilder<WatchListCubit, WatchListState>(
+                        builder: (context, state) {
+                          return InkWell(
+                            onTap: () {
+                              BlocProvider.of<WatchListCubit>(context)
+                                  .selectMovie(movies);
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(4),
+                              child: BlocProvider.of<WatchListCubit>(context).state
+                                  .idList
+                                  .contains(movies.id)
+                                  ? Image.asset(Assets.imagesIcCheck)
+                                  : Image.asset(Assets.imagesIcBookmark),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -91,7 +105,7 @@ class CustomCarouselSliderItem extends StatelessWidget {
                   children: [
                     const SizedBox(height: 10),
                     Text(
-                      results.title ?? '',
+                      movies.title ?? '',
                       overflow: TextOverflow.visible,
                       maxLines: 2,
                       style: const TextStyle(
@@ -101,7 +115,7 @@ class CustomCarouselSliderItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      results.releaseDate ?? '',
+                      movies.releaseDate ?? '',
                       style: const TextStyle(
                         fontSize: 13,
                         color: Color.fromRGBO(181, 180, 180, 1.0),

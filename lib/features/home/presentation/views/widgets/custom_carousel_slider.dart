@@ -43,7 +43,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
 */
             ),
             items: state.movieModel.results!.map((item) {
-              return CustomCarouselSliderItem(results: item);
+              return CustomCarouselSliderItem(movies: item);
             }).toList(),
           );
         } else if (state is PopularMoviesFailure) {
