@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/core/utils/generated/assets.dart';
 import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/manager/similar_movies/similar_movies_cubit.dart';
 import 'package:movies_app/features/home/presentation/views/widgets/more_movies_list_view.dart';
+import 'package:movies_app/features/watch_list/pesentation/manager/watch_list_cubit/watch_list_cubit.dart';
 
 class MovieDetailsViewBody extends StatelessWidget {
   const MovieDetailsViewBody({super.key});
@@ -127,13 +129,25 @@ class MovieDetailsViewBody extends StatelessWidget {
                                 child: CircularProgressIndicator(),
                               ),
                             ),
-                            InkWell(
-                              onTap: () {},
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(4),
-                                child: Image.asset(
-                                    'assets/images/ic_bookmark.png'),
-                              ),
+                            BlocBuilder<WatchListCubit, WatchListState>(
+                              builder: (context, state) {
+                                return InkWell(
+                                  onTap: () {
+                                    BlocProvider.of<WatchListCubit>(context)
+                                        .selectMovie(args);
+                                  },
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(4),
+                                    child: BlocProvider.of<WatchListCubit>(
+                                                context)
+                                            .state
+                                            .idList
+                                            .contains(args.id)
+                                        ? Image.asset(Assets.imagesIcCheck)
+                                        : Image.asset(Assets.imagesIcBookmark),
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),

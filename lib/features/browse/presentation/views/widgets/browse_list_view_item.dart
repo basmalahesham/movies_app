@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/core/utils/generated/assets.dart';
 import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/views/movie_details_view.dart';
+import 'package:movies_app/features/watch_list/pesentation/manager/watch_list_cubit/watch_list_cubit.dart';
 
 class BrowseListViewItem extends StatelessWidget {
   const BrowseListViewItem({
@@ -37,12 +40,24 @@ class BrowseListViewItem extends StatelessWidget {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {},
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
-                  child: Image.asset('assets/images/ic_bookmark.png'),
-                ),
+              BlocBuilder<WatchListCubit, WatchListState>(
+                builder: (context, state) {
+                  return InkWell(
+                    onTap: () {
+                      BlocProvider.of<WatchListCubit>(context)
+                          .selectMovie(movieModel);
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: BlocProvider.of<WatchListCubit>(context)
+                              .state
+                              .idList
+                              .contains(movieModel.id)
+                          ? Image.asset(Assets.imagesIcCheck)
+                          : Image.asset(Assets.imagesIcBookmark),
+                    ),
+                  );
+                },
               ),
             ],
           ),
