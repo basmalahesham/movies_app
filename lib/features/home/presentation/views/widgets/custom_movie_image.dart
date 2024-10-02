@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/core/utils/generated/assets.dart';
 import 'package:movies_app/features/home/data/models/movie_model.dart';
 import 'package:movies_app/features/home/presentation/views/movie_details_view.dart';
+import 'package:movies_app/features/watch_list/pesentation/manager/watch_list_cubit/watch_list_cubit.dart';
 
 class CustomMovieImage extends StatelessWidget {
   const CustomMovieImage({
@@ -38,12 +41,23 @@ class CustomMovieImage extends StatelessWidget {
             ),
           ),
         ),
-        InkWell(
-          onTap: () {},
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: Image.asset('assets/images/ic_bookmark.png'),
-          ),
+        BlocBuilder<WatchListCubit, WatchListState>(
+          builder: (context, state) {
+            return InkWell(
+              onTap: () {
+                BlocProvider.of<WatchListCubit>(context)
+                    .selectMovie(movies.results!.elementAt(index));
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: BlocProvider.of<WatchListCubit>(context)
+                        .idList
+                        .contains(movies.results!.elementAt(index).id)
+                    ? Image.asset(Assets.imagesIcCheck)
+                    : Image.asset(Assets.imagesIcBookmark),
+              ),
+            );
+          },
         ),
       ],
     );
