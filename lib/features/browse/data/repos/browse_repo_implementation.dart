@@ -36,8 +36,7 @@ class BrowseRepoImplementation implements BrowseRepo {
     try {
       var data = await apiService.get(
         endpoint: 'discover/movie',
-        query: categoryName,
-        queryName: 'certification',
+        categoryName: categoryName,
       );
       var result = MovieModel.fromJson(data);
       return right(result);

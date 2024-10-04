@@ -17,7 +17,6 @@ class SearchRepoImplementation implements SearchRepo {
       var data = await apiService.get(
         endpoint: 'search/movie',
         query: query,
-        queryName: 'query',
       );
       var result = MovieModel.fromJson(data);
       return right(result);
