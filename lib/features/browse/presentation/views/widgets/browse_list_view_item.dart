@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/utils/generated/assets.dart';
@@ -31,12 +32,16 @@ class BrowseListViewItem extends StatelessWidget {
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(6),
-                  child: Image.network(
-                    'https://image.tmdb.org/t/p/w500'
-                    '${movieModel.posterPath}',
+                  child: CachedNetworkImage(
+                    imageUrl: 'https://image.tmdb.org/t/p/w500'
+                        '${movieModel.posterPath}',
                     fit: BoxFit.cover,
                     width: 150,
                     height: 100,
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   ),
                 ),
               ),
