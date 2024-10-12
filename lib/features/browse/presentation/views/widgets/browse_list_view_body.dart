@@ -11,7 +11,7 @@ class BrowseListViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)!.settings.arguments as Genres;
     BlocProvider.of<MoviesListCubit>(context)
-        .fetchMoviesList(categoryName: args.name??'');
+        .fetchMoviesList(categoryName: args.id??0);
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(

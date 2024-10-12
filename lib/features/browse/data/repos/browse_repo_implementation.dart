@@ -32,11 +32,11 @@ class BrowseRepoImplementation implements BrowseRepo {
 
   @override
   Future<Either<Failure, MovieModel>> fetchMoviesList(
-      {required String categoryName}) async {
+      {required int categoryId}) async {
     try {
       var data = await apiService.get(
         endpoint: 'discover/movie',
-        categoryName: categoryName,
+        categoryName: categoryId.toString(),
       );
       var result = MovieModel.fromJson(data);
       return right(result);

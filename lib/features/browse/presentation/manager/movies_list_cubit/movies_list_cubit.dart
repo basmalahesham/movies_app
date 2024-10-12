@@ -9,9 +9,9 @@ class MoviesListCubit extends Cubit<MoviesListState> {
   MoviesListCubit(this.browseRepo) : super(MoviesListInitial());
   final BrowseRepo browseRepo;
 
-  Future<void> fetchMoviesList({required String categoryName}) async {
+  Future<void> fetchMoviesList({required int categoryName}) async {
     emit(MoviesListLoading());
-    var result = await browseRepo.fetchMoviesList(categoryName: categoryName);
+    var result = await browseRepo.fetchMoviesList(categoryId: categoryName);
     result.fold(
       (failure) => emit(
         MoviesListFailure(failure.errMessage),
