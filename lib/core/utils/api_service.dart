@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:movies_app/constants.dart';
 
 class ApiService {
   final _baseUrl = 'https://api.themoviedb.org/3/';
-  final _apiKey = '5eaf06d00921bf74711bebae7460e509';
+  final _apiKey = apiKey;
   final Dio _dio;
   ApiService(this._dio);
   Future<dynamic> get({
