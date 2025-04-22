@@ -55,7 +55,6 @@ A beautifully designed Flutter application that allows users to explore trending
 
 ```markdown
 ## 📁 Folder Structure
-```bash
 lib/
 │
 ├── core/                        # Core functionalities shared across the app
@@ -104,11 +103,11 @@ lib/
 3. **Add your TMDb API key:**
 - Create a file or update the existing one (e.g., lib/core/utils/api_constants.dart)
 - Replace the placeholder with your TMDb API key:
-  ```bash
-  static const apiKey = 'YOUR_API_KEY';
+   ```bash
+   static const apiKey = 'YOUR_API_KEY';
 4. **Run the app:**
-```bash
-flutter run
+   ```bash
+   flutter run
   
 ---
 
