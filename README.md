@@ -56,7 +56,6 @@ A beautifully designed Flutter application that allows users to explore trending
 ```markdown
 ## 📁 Folder Structure
 
-```bash
 lib/
 │
 ├── core/                        # Core functionalities shared across the app
