@@ -87,8 +87,7 @@ lib/
 ├── search/                     # Search feature module
 ├── splash/                     # Splash screen module
 └── watch_list/                 # Watch list feature module
-```markdown
-
+```
 
 ---
 
