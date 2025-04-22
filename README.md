@@ -50,6 +50,47 @@ A beautifully designed Flutter application that allows users to explore trending
 
 ---
 
+#### 3. ## 📁 Folder Structure
+
+```markdown
+## 📁 Folder Structure
+
+```bash
+lib/
+│
+├── core/                        # Core functionalities shared across the app
+│   ├── errors/                 # Error handling and failure models
+│   │   └── failures.dart
+│   └── utils/                  # Utilities and shared components
+│       ├── generated/          # (Typically for codegen outputs)
+│       ├── widgets/            # Shared/reusable widgets
+│       ├── api_service.dart    # Handles API requests
+│       ├── app_styles.dart     # Global styling and theming
+│       └── service_locator.dart# Dependency injection setup
+│
+├── features/                   # Feature-based module organization
+│   └── browse/                 # Browse feature
+│       ├── data/               # Data layer
+│       │   ├── models/         # Model classes
+│       │   └── repos/          # Repositories and data sources
+│       └── presentation/       # UI layer
+│           ├── manager/        # State management (e.g., Cubits)
+│           │   ├── genre_cubit/
+│           │   └── movies_list_cubit/
+│           └── views/          # UI Views and Widgets
+│               ├── widgets/
+│               │   ├── browse_list_view.dart
+│               │   └── browse_view.dart
+│
+├── home/                       # Home feature module
+├── layout/                     # General layout components
+├── search/                     # Search feature module
+├── splash/                     # Splash screen module
+└── watch_list/                 # Watch list feature module
+
+
+---
+
 ## 🛠️ Setup Instructions
 
 1. **Clone the repository:**
@@ -58,5 +99,52 @@ A beautifully designed Flutter application that allows users to explore trending
    git clone https://github.com/basmalahesham/movies_app.git
    cd movies_app
 
+---
+
+## 📦 Packages Used
+
+| Package                | Purpose                         |
+|------------------------|----------------------------------|
+| flutter_bloc           | State management (BLoC pattern) |
+| dio                    | API requests                    |
+| get_it                 | Dependency injection            |
+| equatable              | Value equality for models       |
+| cached_network_image   | Efficient image loading         |
+
+---
+
+## ✅ Prerequisites
+
+- Flutter SDK (>=3.0.0)  
+- Dart (>=2.17.0)  
+- An IDE like VS Code or Android Studio  
+- An API key from [TMDb](https://www.themoviedb.org/settings/api)
+
+---
+
+## 🔑 TMDb API Key Setup
+
+1. Create a file called `.env` in the root of your project.  
+2. Add your TMDb API key:
+
+   ```env
+   TMDB_API_KEY=your_api_key_here
+
+---
+
+#### 4. ## 🤝 Contributing 
+
+```markdown
+## 🤝 Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+---
+
+## 🙋‍♀️ Author
+
+- **Basmala Hesham**
+  - GitHub: https://github.com/basmalahesham
+  - LinkedIn: https://www.linkedin.com/in/basmala-hesham-14791a247/
 
 
