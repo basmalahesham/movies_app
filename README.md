@@ -50,7 +50,7 @@ A beautifully designed Flutter application that allows users to explore trending
 
 ---
 
-#### 3. ## 📁 Folder Structure
+## 📁 Folder Structure
 
 ```markdown
 ## 📁 Folder Structure
@@ -87,6 +87,7 @@ lib/
 ├── search/                     # Search feature module
 ├── splash/                     # Splash screen module
 └── watch_list/                 # Watch list feature module
+```markdown
 
 
 ---
@@ -132,9 +133,6 @@ lib/
 
 ---
 
-#### 4. ## 🤝 Contributing 
-
-```markdown
 ## 🤝 Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
