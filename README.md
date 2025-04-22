@@ -1,6 +1,7 @@
 # 🎬 Movies App
 
 A beautifully designed Flutter application that allows users to explore trending, popular, and top-rated movies with details fetched from the [TMDb API](https://www.themoviedb.org/documentation/api).
+[LinkedIn Post](https://www.linkedin.com/posts/basmala-hesham-14791a247_flutter-dart-moviesapp-activity-7292585164713451522-8fao?utm_source=share&utm_medium=member_android&rcm=ACoAAD0usUcBNDIT8NT0GUW7WzzcfqyQVdhtr_8)
 
 ![Movies App Banner](https://github.com/user-attachments/assets/6e665761-e6d9-411f-be5e-29812836b42c)
 
@@ -98,7 +99,18 @@ lib/
    ```bash
    git clone https://github.com/basmalahesham/movies_app.git
    cd movies_app
-
+2. **Install dependencies**
+   ```bash
+   flutter pub get
+3. **Add your TMDb API key:**
+- Create a file or update the existing one (e.g., lib/core/utils/api_constants.dart)
+- Replace the placeholder with your TMDb API key:
+  ```bash
+  static const apiKey = 'YOUR_API_KEY';
+4. **Run the app:**
+```bash
+flutter run
+  
 ---
 
 ## 📦 Packages Used
